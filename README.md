@@ -1,7 +1,7 @@
 # humidifier
 This is an IoT setup to control a humidify in a cabinet. I use [Ikea TOCKARP cupboard](http://www.ikea.com/fi/fi/catalog/products/50296829/#/10296826) but the setup can scale down or up.
 
-The setup is based on IoT stack, notably NodeMCU in combination of DHT22 for humidity sensing and usr-powered vaporizers as they sell on Ebay. Additionally ther is fan to circulate the air, door and low water level sensors used. The running information is displaed to OLED 128x64 display.
+The setup is based on IoT stack, notably NodeMCU in combination of DHT22 for humidity sensing and usb-powered vaporizers as they sell on Ebay. Additionally there is fan to circulate the air, door and low water level sensors used. The running information is displayed to OLED 128x64 display.
 
 ## How is behaves?
 The control is based on binary-level of humidity set to 70%. If below than that, vaporizer is on, if equal or above the vaporizer is off.
@@ -11,7 +11,7 @@ When door is opened, vaporizer is stopped until the door closes.
 Similarly if the water level is too low.
 Upon boot time, NodeMCU connects to configured Wifi network (STATION mode), if such configured. If no such configured or connectivity fails, it starts own access point (AP mode) with the name "humidifier".
 Upon boot time also a tcp server is started up on port 8765. The server accepts plain text lua commands and returns the execution of the command as json data. This way one can echo via netcat lua commands and visualize the result via javascript.
-Connected OLED display showns information about running activities including present humidity levels and tcp server endpoint.
+Connected OLED display shows information about running activities including present humidity levels and tcp server endpoint.
 
 ## Schematics and components
 * Schematics is [here](https://easyeda.com/normal/Humidifier_schematics-a8e7a2e2f8624814bcee30da7ef66c57)
@@ -52,7 +52,7 @@ One has to prepare running setup for ;
 #### Usb vaporizer
 They come in many shapes and features. Initially I used one line this [one](http://www.ebay.com/itm/USB-Mini-Water-Bottle-Caps-Humidifier-Air-Diffuser-Aroma-Mist-Maker-Home-Office-/122255682245?var=&hash=item1c7701aac5:m:minNTUWiu_GnYQEJ53BO-XA). You can choose but beware that some come with explicit on/off button. In such case, you'd have to solder shortcut because the schematics expects to switch it on only by applying power.
 
-Nowadays, I purchase these only to rip apart them. I ripped from one such the circuit board in past and replace only the ceramic disk, which wores out with use. If find somewhere a genuine sell of such disks only for such usb vaporizers, I'd appreciate a hint.
+Nowadays, I purchase these only to rip apart them. I ripped from one such the circuit board in past and replace only the ceramic disk, which worries out with use. If find somewhere a genuine sell of such disks only for such usb vaporizers, I'd appreciate a hint.
 
 #### Fan
 Typically the large space to humidify, the more the fan has to work (change in sw code) or the large fan to be used (to move more air). Initially I used internal laptop cooling fan.
