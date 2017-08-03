@@ -1,3 +1,12 @@
+# eclipse
+.settings
+.classpath
+.project
+.buildpath
+
+# maven-like
+target
+
 # Compiled Lua sources
 luac.out
 
