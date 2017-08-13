@@ -1,0 +1,3 @@
+[submodule "app/submodules/nodemcu-lua-mocks"]
+	path = app/submodules/nodemcu-lua-mocks
+	url = https://github.com/fikin/nodemcu-lua-mocks
