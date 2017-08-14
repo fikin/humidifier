@@ -10,7 +10,7 @@ prepare-contrib : | target/lua
 prepare-sources : prepare-contrib
 	cp src/main/lua/*.lua target/lua/
 prepare-resources : prepare-contrib
-	echo "main resources are empty"
+	echo "no main resources"
 	#@if [ "$$(ls -A src/main/resources)" ] ; then cp -R src/main/resources/* target/lua/ ; fi ;
 compile : prepare-sources prepare-resources
 
@@ -33,8 +33,11 @@ $(test_files) :
 dist :
 	rm -rf target/dist
 	mkdir -p target/dist
-	cp src/main/lua/*.lua target/dist/
-	cp src/main/resources/*.lua target/dist/
+	cp src/main/lua/* target/dist/
+	#cp src/main/resources/* target/dist/
+
+deploy-dist-to-nodemcu : dist
+	nodemcu-tool --connection-delay 1000 -b 9600 upload target/dist/*
 
 clean :
 	rm -rf target
