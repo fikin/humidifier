@@ -1,6 +1,6 @@
 local data = {
   IsSensorMonitored = true,
-  WhatSensorValueIsWaterTooLow = 20,
+  WhatSensorValueIsWaterTooLow = 1024,
   ReadIntervalMs = 900,
   isWaterLevelOk = false,
   msg = nil
