@@ -22,6 +22,7 @@ function testDoorOpen()
   local s = newSensor()
   luaunit.assertTrue( s.isDoorOpen )
   gpio.TestData.setHigh( s.DoorSwitchPin )
+  Timer.joinAll(550)
   luaunit.assertTrue( s.isDoorOpen )
 end
 
@@ -29,13 +30,15 @@ function testDoorClosed()
   local s = newSensor()
   luaunit.assertTrue( s.isDoorOpen )
   gpio.TestData.setLow( s.DoorSwitchPin )
+  Timer.joinAll(550)
   luaunit.assertFalse( s.isDoorOpen )
 end
 
 function testDoorSensorIsDisabled()
   local s = newSensor()
   luaunit.assertTrue( s.IsSensorMonitored )
-  s.enableTheSensor(false)
+  s.IsSensorMonitored = false
+  Timer.joinAll(550)
   luaunit.assertFalse( s.IsSensorMonitored )
   luaunit.assertFalse( s.isDoorOpen )
 end
@@ -43,7 +46,13 @@ end
 function testDoorSensorIsEabled()
   local s = newSensor()
   luaunit.assertTrue( s.IsSensorMonitored )
-  s.enableTheSensor(true)
+  luaunit.assertTrue( s.isDoorOpen )
+  s.IsSensorMonitored = false
+  Timer.joinAll(550)
+  luaunit.assertFalse( s.IsSensorMonitored )
+  luaunit.assertFalse( s.isDoorOpen )
+  s.IsSensorMonitored = true
+  Timer.joinAll(550)
   luaunit.assertTrue( s.IsSensorMonitored )
   luaunit.assertTrue( s.isDoorOpen )
 end
